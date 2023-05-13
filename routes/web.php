@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DemoResourceController;
+use App\Http\Controllers\DemoSingleActionController;
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +16,45 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{id}', function ($id) {
+Route::get('/index/{id?}', function ($id = null) {
     $userName = "Saad";
     $data =  compact('id', 'userName');
     return view('index')->with($data);
 });
 
-Route::get('/index', function () {
+Route::get('/', function () {
     return view('welcome');
 });
+
+
+// Route::get('/form', function () {
+//     return view('form');
+// });
+
+Route::get(
+    '/form',
+    [FormController::class, 'getForm']
+);
+Route::post(
+    '/form',
+    [FormController::class, 'getData']
+);
+
+
+Route::get(
+    '/form/edit',
+    [FormController::class, 'edit']
+);
+
+
+Route::get(
+    '/sa',
+    DemoSingleActionController::class
+);
+
+
+Route::resource(
+    'image',
+    DemoResourceController::class
+
+);

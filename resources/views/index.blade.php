@@ -40,6 +40,8 @@
     <br>
 @endwhile
 
+
+
    <h1>Index page {{$a}}</h1>
         <script src="" async defer></script>
     </body>
