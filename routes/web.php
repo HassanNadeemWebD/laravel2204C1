@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/index/{id?}', function ($id = null) {
     $userName = "Saad";
-    $data =  compact('id', 'userName');
+    $data = compact('id', 'userName');
     return view('index')->with($data);
 });
 
@@ -57,4 +57,8 @@ Route::resource(
     'image',
     DemoResourceController::class
 
+);
+Route::get(
+    '/show',
+    [FormController::class, 'show']
 );

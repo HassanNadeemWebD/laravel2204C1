@@ -14,6 +14,7 @@
 </head>
 
 <body class="container">
+   {{-- {{@message}} --}}
 
     <h1>Registration Form </h1>
     <form action="{{url('/')}}/form" method="post">
