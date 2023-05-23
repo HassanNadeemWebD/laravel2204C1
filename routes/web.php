@@ -62,3 +62,16 @@ Route::get(
     '/show',
     [FormController::class, 'show']
 );
+Route::get(
+    '/edit/{id}',
+    [FormController::class, 'edit']
+);
+Route::post(
+    '/update',
+    [FormController::class, 'update']
+);
+
+Route::get(
+    '/delete/{id}',
+    [FormController::class, 'delete']
+);

@@ -41,7 +41,8 @@
                     <td>{{$item->lastName}}</td>
                     <td>{{$item->email}}</td>
                     <td>{{$item->password}}</td>
-                    <td> <button class="btn btn-primary">Update</button> <button class="btn btn-danger">Delete</button> </td>
+                    <td> <a href="/edit/{{$item->customerID}}"><button class="btn btn-primary">Update</button></a>  
+                        <a href="/delete/{{$item->customerID}}"><button class="btn btn-danger">Delete</button></a>  </td>
                 </tr>
             @endforeach
        

@@ -10,26 +10,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Document</title>
+    <title>{{ $heading }}</title>
 </head>
 
 <body class="container">
-   {{-- {{@message}} --}}
+    <a href="{{url('/')}}/show"> <button class="btn btn-primary">Show</button></a>
+    {{-- <a href=""> <button class="btn btn-primary"></button></a>
+    <a href=""> <button class="btn btn-primary">Show</button></a> --}}
+    {{-- {{@message}} --}}
 
-    <h1>Registration Form </h1>
-    <form action="{{url('/')}}/form" method="post">
+    <h1>{{ $heading }} </h1>
+    {{-- {{ $customer }} --}}
+    <form action="{{ url('/') }}{{ $route }}" method="post">
         @csrf
         <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="form-outline">
+            <input type="hidden" id="form3Example1" name="id" class="form-control" value="<?php if (isset($customer->customerID)) {
+                echo $customer->customerID;
+            } else {
+                echo '';
+            } ?>" />
+
+        </div>
         <div class="row mb-4">
             <div class="col">
                 <div class="form-outline">
-                    <input type="text" id="form3Example1" name="fname" class="form-control" />
+                    <input type="text" id="form3Example1" name="fname" class="form-control"
+                        value="<?php if (isset($customer->firstName)) {
+                            echo $customer->firstName;
+                        } else {
+                            echo '';
+                        } ?>" />
                     <label class="form-label" for="form3Example1">First name</label>
                 </div>
             </div>
             <div class="col">
                 <div class="form-outline">
-                    <input type="text" id="form3Example2" name="lname" class="form-control" />
+                    <input type="text" id="form3Example2" name="lname" class="form-control"
+                        value="<?php if (isset($customer->lastName)) {
+                            echo $customer->lastName;
+                        } else {
+                            echo '';
+                        } ?>" />
                     <label class="form-label" for="form3Example2">Last name</label>
                 </div>
             </div>
@@ -37,13 +59,22 @@
 
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="email" id="form3Example3" name="email" class="form-control" />
+            <input type="email" id="form3Example3" name="email" class="form-control" value="<?php if (isset($customer->email)) {
+                echo $customer->email;
+            } else {
+                echo '';
+            } ?>" />
             <label class="form-label" for="form3Example3">Email address</label>
         </div>
 
         <!-- Password input -->
         <div class="form-outline mb-4">
-            <input type="password" id="form3Example4" name="password" class="form-control" />
+            <input type="password" id="form3Example4" name="password" class="form-control"
+                value="<?php if (isset($customer->password)) {
+                    echo $customer->password;
+                } else {
+                    echo '';
+                } ?>" />
             <label class="form-label" for="form3Example4">Password</label>
         </div>
 
@@ -56,7 +87,7 @@
         </div> --}}
 
         <!-- Submit button -->
-        <button type="submit" name="register" class="btn btn-primary btn-block mb-4">Sign up</button>
+        <button type="submit" name="register" class="btn btn-primary btn-block mb-4">{{ $btnTxt }}</button>
 
         <!-- Register buttons -->
         <div class="text-center">
